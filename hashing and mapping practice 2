@@ -1,0 +1,29 @@
+string UncommonChars(string A, string B)
+        {
+           vector<int>a(26,0);
+           vector<int>b(26,0);
+           string str;
+           for(int i=0;i<A.length();i++){
+               int index=A[i]-'a';
+               a[index]++;
+           }
+               for(int i=0;i<B.length();i++){
+               int index=B[i]-'a';
+               b[index]++;
+           }
+           for(int i=0;i<26;i++){
+               if(a[i]==0 &&b[i]>0){
+                   char c=i+'a';
+                   str.push_back(c);
+               }
+               if(a[i]>0&&b[i]==0){
+                    char c=i+'a';
+                   str.push_back(c);
+               }
+           }
+           if(str.length()==0) {
+
+              str="-1";
+           }
+           return str;
+        }
