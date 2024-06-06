@@ -1,0 +1,52 @@
+class Solution
+{
+    public:
+    void merge(int arr[], int low, int mid, int high)
+    {
+     // Your code here
+         int v[high-low+1];
+    //first array [low ...mid]
+    //second array[mid+1..high]
+    int left=low,right=mid+1,k=0;
+    while(left<=mid && right<=high)
+    {
+        //checking if the left array element is smaller than the right array element
+        //[low<=mid+1]
+        if(arr[left]<=arr[right]){
+            v[k]=arr[left];
+            left++;
+        }else{
+            v[k]=arr[right];
+            right++;
+        }
+        k++;
+    }
+    while(left<=mid){
+        v[k]=arr[left];
+        left++;
+        k++;
+    }
+    while(right<=high){
+        v[k]=arr[right];
+        right++;
+        k++;
+    }
+    for(int i=low;i<=high;i++){
+        //for setting the correct array index if low is 2 means 2-2 =0 from 0 index it will pick from temp
+        //array and put it in the 2nd index.
+        //arr[2]=v[2-2]->v[0];
+        arr[i]=v[i-low];
+    }
+    }
+    public:
+    void mergeSort(int arr[], int low, int high)
+    {
+        if(low>=high){
+    return;
+}
+    int mid=(low+high)/2;
+    mergeSort(arr,low,mid);
+    mergeSort(arr,mid+1,high);
+    merge(arr,low,mid,high);
+    }
+};
