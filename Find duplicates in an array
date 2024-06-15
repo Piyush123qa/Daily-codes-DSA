@@ -1,0 +1,23 @@
+class Solution{
+  public:
+    vector<int> duplicates(long long arr[], int n) {
+        // code here
+        sort(arr,arr+n);
+        vector<int>result;
+        int cnt=1;
+        for(int i=0;i<n;i++){
+            if(arr[i]==arr[i+1]){
+                cnt++;
+            }else{
+                if(cnt>1){
+                    result.push_back(arr[i]);
+                    cnt=1;
+                }
+            }
+        }
+        if(result.empty()){
+            result.push_back(-1);
+        }else
+         return result;
+    }
+};
