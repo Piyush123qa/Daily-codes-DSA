@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> sortArrayByParity(vector<int>& nums) {
+       vector<int> result;
+       vector<int> evens;
+       vector<int> odds;
+
+    // Separate numbers into evens and odds
+    for (int num : nums) {
+        if (num % 2 == 0) {
+            evens.push_back(num);
+        } else {
+            odds.push_back(num);
+        }
+    }
+
+    // Concatenate evens and odds
+    result.insert(result.end(), evens.begin(), evens.end());
+    result.insert(result.end(), odds.begin(), odds.end());
+
+    return result;
+    }
+};
