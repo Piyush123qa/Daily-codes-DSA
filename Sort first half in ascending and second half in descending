@@ -1,0 +1,10 @@
+class Solution{
+  public:
+    void customSort(int arr[], int n) {
+        // code here 
+      int p=n/2;
+      sort(arr,arr+p);
+      sort(arr+p,arr+n);
+      reverse(arr+p,arr+n);
+    }
+};
