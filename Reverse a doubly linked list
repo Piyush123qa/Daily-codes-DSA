@@ -1,0 +1,21 @@
+class Solution
+{
+    public:
+    Node* reverseDLL(Node * head)
+    {
+        //Your code here
+         stack<int>s;
+        Node * temp=head;
+        while(temp){
+            s.push(temp->data);
+            temp=temp->next;
+        }
+        temp=head;
+        while(temp){
+            temp->data=s.top();
+            s.pop();
+            temp=temp->next;
+        }
+        return head;
+    }
+};
