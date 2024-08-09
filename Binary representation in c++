@@ -1,0 +1,26 @@
+class Solution{
+public:
+
+  void create_tree(node* root0, vector<int> &vec) {
+    if (!root0 || vec.empty()) return;
+
+    queue<node*> q;
+    q.push(root0);
+    int i = 1;
+    while(!q.empty() && i < vec.size()) {
+        node* temp = q.front();
+        q.pop();
+
+        if (i < vec.size()) {
+            temp->left = newNode(vec[i]);
+            q.push(temp->left);
+            i++;
+        }
+
+        if (i < vec.size()) {
+            temp->right = newNode(vec[i]);
+            q.push(temp->right);
+            i++;
+        }
+    }
+}
