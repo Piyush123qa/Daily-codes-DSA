@@ -1,0 +1,14 @@
+void f(TreeNode* root, vector<vector<int>> &vec){
+    if(root == NULL) return;
+    vec[1].push_back(root->data);
+    f(root->left, vec);
+    vec[0].push_back(root->data);
+    f(root->right, vec);
+    vec[2].push_back(root->data);
+}
+
+vector<vector<int>> getTreeTraversal(TreeNode *root){
+    vector<vector<int>> ans(3);
+    f(root, ans);
+    return ans;
+}
