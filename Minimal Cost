@@ -1,0 +1,19 @@
+int f(int n, vector<int> &arr, int k, vector<int> &dp) {
+    if (n == 0) return 0; // Base case: cost to reach the first stone is 0
+    if (dp[n] != -1) return dp[n]; // Use memoized result if available
+
+    int mini = INT_MAX;
+    for (int i = 1; i <= k; ++i) {
+        if (n - i >= 0) { // Ensure the jump is within bounds
+            int jump = f(n - i, arr, k, dp) + abs(arr[n] - arr[n - i]); // Correct jump cost calculation
+            mini = min(mini, jump);
+        }
+    }     
+    return dp[n] = mini; // Memoize the result
+}
+
+int minimizeCost(vector<int>& arr, int k) {
+    int n = arr.size();
+    vector<int> dp(n, -1);
+    return f(n - 1, arr, k, dp); // Start the recursion from the last stone
+}
